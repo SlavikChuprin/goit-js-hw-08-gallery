@@ -124,7 +124,8 @@ function openModal(evt){
 
 function closeModal(){
   lightbox.classList.remove("is-open");
-}
+  lightboxImage.setAttribute("src", "");
+};
 
 function closeModalEsc(evt){
  consol.log(evt)
