@@ -19,8 +19,8 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   background-color: #fff;
   color: #212121;
 }
@@ -58,7 +58,6 @@ body {
   display: block;
   text-decoration: none;
   height: 100%;
-  pointer-events: none;
 }
 .gallery__image:hover,
 .gallery__link:hover {
@@ -129,7 +128,7 @@ body {
   cursor: pointer;
   transition: background-color var(--animation-duration) var(--timing-function);
   outline: none;
-  background-image: url("../images/icon-close.svg");
+  background-image: url('../images/icon-close.svg');
   background-position: center;
   background-size: 60%;
   background-repeat: no-repeat;

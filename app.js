@@ -70,7 +70,6 @@ const lightboxImage = document.querySelector('.lightbox__image');
 const closeLightbox = document.querySelector('.lightbox__button[data-action="close-lightbox"]');
 const lightboxOverlay = document.querySelector('.lightbox__overlay');
 
-
 const createGalleryMarkup = creatGallery(galleryItems);
 
 
@@ -81,7 +80,7 @@ galleryWindow.addEventListener('click', openModal);
 closeLightbox.addEventListener('click', closeModal);
 lightboxOverlay.addEventListener('click', closeModal);
 window.addEventListener('keydown',closeModalEsc);
-
+window.addEventListener('keydown', changePic);
 // function creatGallery(items) {
 //  return items.map(({ preview, original, description }) => {
 //    return `<li class="gallery__item">
@@ -129,4 +128,19 @@ function closeModalEsc(evt){
   if (evt.key === 'Escape'){
   lightbox.classList.remove("is-open");
 };
+};
+
+function changePic(evt){
+console.log(evt.key);
+const arrOfLinksPic = galleryItems.map(item => item.original);
+if (evt.key === 'ArrowRight'){
+const newSrcAttribut = (arrOfLinksPic.indexOf(lightboxImage.getAttribute("src")) !== (arrOfLinksPic.length-1))?
+arrOfLinksPic.indexOf(lightboxImage.getAttribute("src")) + 1 : 0;
+lightboxImage.setAttribute("src",arrOfLinksPic[newSrcAttribut]); 
+};
+if (evt.key === 'ArrowLeft'){
+  const newSrcAttribut = (arrOfLinksPic.indexOf(lightboxImage.getAttribute("src")) === 0)?
+  (arrOfLinksPic.length-1) : arrOfLinksPic.indexOf(lightboxImage.getAttribute("src")) - 1;
+  lightboxImage.setAttribute("src",arrOfLinksPic[newSrcAttribut]); 
+  };
 };
