@@ -80,7 +80,7 @@ galleryWindow.insertAdjacentHTML('beforeend', createGalleryMarkup);
 galleryWindow.addEventListener('click', openModal);
 closeLightbox.addEventListener('click', closeModal);
 lightboxOverlay.addEventListener('click', closeModal);
-
+window.addEventListener('keydown',closeModalEsc);
 
 // function creatGallery(items) {
 //  return items.map(({ preview, original, description }) => {
@@ -111,15 +111,13 @@ function creatGallery(items) {
      />
   
    </li>`;}).join('');
- };
+};
  
 function openModal(evt){
 
  if(!evt.target.classList.contains('gallery__image')) {return};
    lightboxImage.setAttribute("src", evt.target.dataset.source);
    lightbox.classList.add("is-open");
- 
-  console.log(evt.target.dataset.source);
 };
 
 function closeModal(){
@@ -128,6 +126,7 @@ function closeModal(){
 };
 
 function closeModalEsc(evt){
- consol.log(evt)
+  if (evt.key === 'Escape'){
   lightbox.classList.remove("is-open");
+};
 };
