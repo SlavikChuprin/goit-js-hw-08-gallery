@@ -69,6 +69,7 @@ const lightbox = document.querySelector('.lightbox');
 const lightboxImage = document.querySelector('.lightbox__image');
 const closeLightbox = document.querySelector('.lightbox__button[data-action="close-lightbox"]');
 const lightboxOverlay = document.querySelector('.lightbox__overlay');
+const gallerylink = document.querySelector('.gallery__link');
 
 const createGalleryMarkup = creatGallery(galleryItems);
 
@@ -81,6 +82,8 @@ closeLightbox.addEventListener('click', closeModal);
 lightboxOverlay.addEventListener('click', closeModal);
 window.addEventListener('keydown',closeModalEsc);
 window.addEventListener('keydown', changePic);
+// gallerylink.addEventListener('click', prevDef);
+
 // function creatGallery(items) {
 //  return items.map(({ preview, original, description }) => {
 //    return `<li class="gallery__item">
@@ -144,3 +147,7 @@ if (evt.key === 'ArrowLeft'){
   lightboxImage.setAttribute("src",arrOfLinksPic[newSrcAttribut]); 
   };
 };
+
+// function prevDef(evt){
+//   evt.preventDefault();
+// };
