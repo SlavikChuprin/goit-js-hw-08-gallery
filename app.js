@@ -80,9 +80,6 @@ galleryWindow.insertAdjacentHTML('beforeend', createGalleryMarkup);
 galleryWindow.addEventListener('click', openModal);
 closeLightbox.addEventListener('click', closeModal);
 lightboxOverlay.addEventListener('click', closeModal);
-window.addEventListener('keydown',closeModalEsc);
-window.addEventListener('keydown', changePic);
-// gallerylink.addEventListener('click', prevDef);
 
 // function creatGallery(items) {
 //  return items.map(({ preview, original, description }) => {
@@ -120,34 +117,32 @@ function openModal(evt){
  if(!evt.target.classList.contains('gallery__image')) {return};
    lightboxImage.setAttribute("src", evt.target.dataset.source);
    lightbox.classList.add("is-open");
+   window.addEventListener('keydown',closeModalEscChangePic);
 };
 
 function closeModal(){
   lightbox.classList.remove("is-open");
   lightboxImage.setAttribute("src", "");
+  window.removeEventListener('keydown',closeModalEscChangePic); 
 };
 
-function closeModalEsc(evt){
+function closeModalEscChangePic(evt){
   if (evt.key === 'Escape'){
-  lightbox.classList.remove("is-open");
-};
-};
+    lightbox.classList.remove("is-open");
+    window.removeEventListener('keydown',closeModalEscChangePic);
+   }; 
 
-function changePic(evt){
-console.log(evt.key);
 const arrOfLinksPic = galleryItems.map(item => item.original);
-if (evt.key === 'ArrowRight'){
-const newSrcAttribut = (arrOfLinksPic.indexOf(lightboxImage.getAttribute("src")) !== (arrOfLinksPic.length-1))?
-arrOfLinksPic.indexOf(lightboxImage.getAttribute("src")) + 1 : 0;
-lightboxImage.setAttribute("src",arrOfLinksPic[newSrcAttribut]); 
-};
-if (evt.key === 'ArrowLeft'){
+  if (evt.key === 'ArrowRight'){
+  const newSrcAttribut = (arrOfLinksPic.indexOf(lightboxImage.getAttribute("src")) !== (arrOfLinksPic.length-1))?
+  arrOfLinksPic.indexOf(lightboxImage.getAttribute("src")) + 1 : 0;
+  lightboxImage.setAttribute("src",arrOfLinksPic[newSrcAttribut]); 
+  };
+
+  if (evt.key === 'ArrowLeft'){
   const newSrcAttribut = (arrOfLinksPic.indexOf(lightboxImage.getAttribute("src")) === 0)?
   (arrOfLinksPic.length-1) : arrOfLinksPic.indexOf(lightboxImage.getAttribute("src")) - 1;
   lightboxImage.setAttribute("src",arrOfLinksPic[newSrcAttribut]); 
   };
 };
 
-// function prevDef(evt){
-//   evt.preventDefault();
-// };
